@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">AndroidNews</string>
+
+    <!--menu-->
+    <string name="news">AndroidNews</string>
+    <string name="zhihu">知乎</string>
+    <string name="photo">图片</string>
+    <string name="video">视频</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
+
+    <!-- 新闻 -->
+    <string name="photo_collections">图集：%1$s</string>
+    <string name="news_from">%1$s %2$s</string>
+    <string name="photo_detail_title">%1$d/%2$d　%3$s</string>
+    <string name="web_view">WebView</string>
+    <string name="photo_news">图片新闻</string>
+    <string name="browser">用浏览器打开</string>
+
+    <!-- 新闻频道 -->
+    <string name="channel_explain">点击可增删/长按并拖拽可排序</string>
+    <string name="my_channel">我的频道</string>
+    <string name="more_channel">更多频道</string>
+    <string name="channel_manage">频道管理</string>
+    <string name="share">分享</string>
+    <string name="share_contents">来自「AndroidNews」的分享：%1$s %2$s</string>
+
+    <!-- 图片 -->
+    <string name="girl_title">靓妹纸</string>
+    <string name="girl">妹纸</string>
+    <string name="set_wallpaper">设为壁纸</string>
+    <!--视频-->
+    <string name="videos">视频</string>
+    <string name="video_play_times">%1$s次播放</string>
+
+
+</resources>
