@@ -3,6 +3,8 @@ hello world
 
 AndroidNews，一款新闻阅读 App框架，基于 Material Design + MVP + RxJava + Retrofit + Glide，基本涵盖了当前 Android 端开发最常用的主流框架，基于此框架可以快速开发一个app。
 
+
+![image](https://github.com/zhjohow/AndroidNews/screenshots/s70405-160739.jpg)
 ####目前模块包括：
 
 新闻：头条、科技、财经、NBA等类型，可自主选择订阅
