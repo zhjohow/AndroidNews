@@ -5,9 +5,9 @@ AndroidNews，一款新闻阅读 App框架，基于 Material Design + MVP + RxJa
 
 
 
-<img src="https://github.com/zhjohow/AndroidNews/blob/master/screenshots/S70405-160739.jpg" height = "400" width = "150" align=center />
-<img src="https://github.com/zhjohow/AndroidNews/blob/master/screenshots/S70405-160751.jpg" height = "400" width = "150"  align=center />
-<img src="https://github.com/zhjohow/AndroidNews/blob/master/screenshots/S70405-160759.jpg" height = "400" width = "150" align=center />
+<img src="https://github.com/zhjohow/AndroidNews/blob/master/screenshots/S70405-160739.jpg" height = "400" align=center />
+<img src="https://github.com/zhjohow/AndroidNews/blob/master/screenshots/S70405-160751.jpg" height = "400" align=center />
+<img src="https://github.com/zhjohow/AndroidNews/blob/master/screenshots/S70405-160759.jpg" height = "400" align=center />
 
 ####目前模块包括：
 
