@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <com.zhjohow.androidnews.ui.zone.widget.MultiImageView
+    <com.zhjh.androidnews.ui.zone.widget.MultiImageView
         android:id="@+id/multiImagView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp" >
-    </com.zhjohow.androidnews.ui.zone.widget.MultiImageView>
+    </com.zhjh.androidnews.ui.zone.widget.MultiImageView>
 
 </LinearLayout>

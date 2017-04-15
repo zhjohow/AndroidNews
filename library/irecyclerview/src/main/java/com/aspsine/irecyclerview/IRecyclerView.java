@@ -20,7 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.aspsine.irecyclerview.widget.LoadMoreFooterView;
-import com.zhjohow.common.commonutils.LogUtils;
+import com.zhjh.common.commonutils.LogUtils;
 
 /**
  * Created by aspsine on 16/3/3.

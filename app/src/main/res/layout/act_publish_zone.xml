@@ -5,7 +5,7 @@
     android:background="?attr/dayNightBackground"
     android:orientation="vertical">
 
-    <com.zhjohow.common.commonwidget.NormalTitleBar
+    <com.zhjh.common.commonwidget.NormalTitleBar
         android:id="@+id/ntb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -31,7 +31,7 @@
         android:layout_height="2dp"
         android:layout_below="@+id/et_content" />
 
-    <com.zhjohow.common.commonwidget.NoScrollGridView
+    <com.zhjh.common.commonwidget.NoScrollGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

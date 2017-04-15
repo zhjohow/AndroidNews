@@ -3,7 +3,7 @@ version = "1.1.0" // 版本号
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23"
+    buildToolsVersion "25.0.0"
     resourcePrefix "imgsel"
 
     defaultConfig {

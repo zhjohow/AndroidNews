@@ -11,7 +11,7 @@ android:layout_height="match_parent">
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="?attr/dayNightBackground">
-    <com.zhjohow.common.commonwidget.NormalTitleBar
+    <com.zhjh.common.commonwidget.NormalTitleBar
         android:id="@+id/ntb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -25,7 +25,7 @@ android:layout_height="match_parent">
         app:refreshEnabled="true"
         />
 
-    <com.zhjohow.common.commonwidget.LoadingTip
+    <com.zhjh.common.commonwidget.LoadingTip
         android:id="@+id/loadedTip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
