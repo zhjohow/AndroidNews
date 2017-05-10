@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.tab_layout)
     CommonTabLayout tabLayout;
 
-    private String[] mTitles = {"首页", "美女","视频"};
+    private String[] mTitles = {"资讯", "图片","视频"};
     private int[] mIconUnselectIds = {
             R.mipmap.ic_home_normal,R.mipmap.ic_girl_normal,R.mipmap.ic_video_normal};
     private int[] mIconSelectIds = {
@@ -75,12 +75,12 @@ public class MainActivity extends BaseActivity {
     }
     @Override
     public void initView() {
-        //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
-        UpdateKey.API_TOKEN = AppConfig.API_FIRE_TOKEN;
-        UpdateKey.APP_ID = AppConfig.APP_FIRE_ID;
-        //如果你想通过Dialog来进行下载，可以如下设置
-//        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
-        UpdateFunGO.init(this);
+//        //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
+//        UpdateKey.API_TOKEN = AppConfig.API_FIRE_TOKEN;
+//        UpdateKey.APP_ID = AppConfig.APP_FIRE_ID;
+//        //如果你想通过Dialog来进行下载，可以如下设置
+////        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
+//        UpdateFunGO.init(this);
         //初始化菜单
         initTab();
     }

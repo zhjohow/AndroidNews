@@ -1,8 +1,13 @@
 package com.zhjh.androidnews.ui.main.fragment;
 
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.aspsine.irecyclerview.IRecyclerView;
@@ -14,137 +19,107 @@ import com.aspsine.irecyclerview.widget.LoadMoreFooterView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zhjh.androidnews.R;
+import com.zhjh.androidnews.app.AppConstant;
 import com.zhjh.androidnews.bean.PhotoGirl;
+import com.zhjh.androidnews.bean.VideoChannelTable;
+import com.zhjh.androidnews.db.VideosChannelTableManager;
 import com.zhjh.androidnews.ui.news.activity.PhotosDetailActivity;
 import com.zhjh.androidnews.ui.news.contract.PhotoListContract;
+import com.zhjh.androidnews.ui.news.fragment.VideosFragment;
 import com.zhjh.androidnews.ui.news.model.PhotosListModel;
 import com.zhjh.androidnews.ui.news.presenter.PhotosListPresenter;
+import com.zhjh.androidnews.utils.MyUtils;
 import com.zhjh.common.base.BaseFragment;
+import com.zhjh.common.base.BaseFragmentAdapter;
 import com.zhjh.common.commonwidget.LoadingTip;
 import com.zhjh.common.commonwidget.NormalTitleBar;
+import android.support.v4.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * des:图片首页
  * Created by xsf
  * on 2016.09.11:49
  */
-public class PhotosMainFragment extends BaseFragment<PhotosListPresenter,PhotosListModel> implements PhotoListContract.View ,OnRefreshListener,OnLoadMoreListener{
-    @Bind(R.id.ntb)
-    NormalTitleBar ntb;
-    @Bind(R.id.irc)
-    IRecyclerView irc;
-    @Bind(R.id.loadedTip)
-    LoadingTip loadedTip;
+public class PhotosMainFragment extends BaseFragment {
+    @Bind(R.id.tabs)
+    TabLayout tabs;
+    @Bind(R.id.view_pager)
+    ViewPager viewPager;
     @Bind(R.id.fab)
     FloatingActionButton fab;
-    private CommonRecycleViewAdapter<PhotoGirl>adapter;
-    private static int SIZE = 20;
-    private int mStartPage = 1;
+    private BaseFragmentAdapter fragmentAdapter;
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.act_photos_list;
+        return R.layout.app_bar_photo;
     }
 
     @Override
     public void initPresenter() {
-        mPresenter.setVM(this,mModel);
+
     }
 
     @Override
     public void initView() {
-        ntb.setTvLeftVisiable(false);
-        ntb.setTitleText(getString(R.string.girl_title));
-        adapter=new CommonRecycleViewAdapter<PhotoGirl>(getContext(),R.layout.item_photo) {
-            @Override
-            public void convert(ViewHolderHelper helper,final PhotoGirl photoGirl) {
-                ImageView imageView=helper.getView(R.id.iv_photo);
-                Glide.with(mContext).load(photoGirl.getUrl())
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .placeholder(com.zhjh.common.R.drawable.ic_image_loading)
-                        .error(com.zhjh.common.R.drawable.ic_empty_picture)
-                        .centerCrop().override(1090, 1090*3/4)
-                        .crossFade().into(imageView);
+        List<String> channelNames = new ArrayList<>();
+        List<VideoChannelTable> videoChannelTableList = VideosChannelTableManager.loadVideosChannelsMine();
+        List<Fragment> mNewsFragmentList = new ArrayList<>();
+        for (int i = 0; i < videoChannelTableList.size(); i++) {
+            channelNames.add(videoChannelTableList.get(i).getChannelName());
+            mNewsFragmentList.add(createListFragments(videoChannelTableList.get(i)));
+        }
+        fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
+        viewPager.setAdapter(fragmentAdapter);
+        tabs.setupWithViewPager(viewPager);
+        MyUtils.dynamicSetTabLayoutMode(tabs);
+        setPageChangeListener();
 
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PhotosDetailActivity.startAction(mContext,photoGirl.getUrl());
-                    }
-                });
-            }
-        };
-        irc.setAdapter(adapter);
-        irc.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        irc.setOnLoadMoreListener(this);
-        irc.setOnRefreshListener(this);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                irc.smoothScrollToPosition(0);
+                mRxManager.post(AppConstant.NEWS_LIST_TO_TOP, "");
             }
         });
-        mPresenter.getPhotosListDataRequest(SIZE, mStartPage);
     }
 
-    @Override
-    public void returnPhotosListData(List<PhotoGirl> photoGirls) {
-        if (photoGirls != null) {
-            mStartPage +=1;
-            if (adapter.getPageBean().isRefresh()) {
-                irc.setRefreshing(false);
-                adapter.replaceAll(photoGirls);
-            } else {
-                if (photoGirls.size() > 0) {
-                    irc.setLoadMoreStatus(LoadMoreFooterView.Status.GONE);
-                    adapter.addAll(photoGirls);
-                } else {
-                    irc.setLoadMoreStatus(LoadMoreFooterView.Status.THE_END);
-                }
+    private void setPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
-        }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private VideosFragment createListFragments(VideoChannelTable videoChannelTable) {
+        VideosFragment fragment = new VideosFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(AppConstant.VIDEO_TYPE, videoChannelTable.getChannelId());
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
-    public void showLoading(String title) {
-        if(adapter.getPageBean().isRefresh())
-        loadedTip.setLoadingTip(LoadingTip.LoadStatus.loading);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
-
-    @Override
-    public void stopLoading() {
-        loadedTip.setLoadingTip(LoadingTip.LoadStatus.finish);
-    }
-
-    @Override
-    public void showErrorTip(String msg) {
-        if( adapter.getPageBean().isRefresh()) {
-            loadedTip.setLoadingTip(LoadingTip.LoadStatus.error);
-            loadedTip.setTips(msg);
-            irc.setRefreshing(false);
-        }else{
-            irc.setLoadMoreStatus(LoadMoreFooterView.Status.ERROR);
-        }
-    }
-
-    @Override
-    public void onRefresh() {
-        adapter.getPageBean().setRefresh(true);
-        mStartPage = 0;
-        //发起请求
-        irc.setRefreshing(true);
-        mPresenter.getPhotosListDataRequest(SIZE, mStartPage);
-    }
-    @Override
-    public void onLoadMore(View loadMoreView) {
-        adapter.getPageBean().setRefresh(false);
-        //发起请求
-        irc.setLoadMoreStatus(LoadMoreFooterView.Status.LOADING);
-        mPresenter.getPhotosListDataRequest(SIZE, mStartPage);
-    }
-
 }
+

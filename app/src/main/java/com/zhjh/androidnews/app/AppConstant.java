@@ -23,7 +23,7 @@ public class AppConstant {
     public static final String VIDEO_TYPE = "VIDEO_TYPE";
 
     public static String NEWS_LIST_TO_TOP = "NEWS_LIST_TO_TOP";//列表返回顶部
-    public static String ZONE_PUBLISH_ADD = "ZONE_PUBLISH_ADD";//发布说说
+
 
     public static String NEWS_POST_ID = "NEWS_POST_ID";//新闻详情id
     public static String NEWS_LINK = "NEWS_LINK";

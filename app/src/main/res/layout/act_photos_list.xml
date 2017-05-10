@@ -9,10 +9,10 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <com.zhjh.common.commonwidget.NormalTitleBar
-            android:id="@+id/ntb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <!--<com.zhjh.common.commonwidget.NormalTitleBar-->
+            <!--android:id="@+id/ntb"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" />-->
 
         <com.aspsine.irecyclerview.IRecyclerView
             android:id="@+id/irc"
