@@ -32,6 +32,7 @@ public class AppConstant {
     public static final String PHOTO_DETAIL_IMGSRC = "photo_detail_imgsrc";
     public static final String PHOTO_DETAIL = "photo_detail";
     public static final String PHOTO_TAB_CLICK = "PHOTO_TAB_CLICK";
+    public static final String PHOTO_TYPE = "PHOTO_TYPE";
 
     public static final String NEWS_IMG_RES = "news_img_res";
     public static final String TRANSITION_ANIMATION_NEWS_PHOTOS = "transition_animation_news_photos";

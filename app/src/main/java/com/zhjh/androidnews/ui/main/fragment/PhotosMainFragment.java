@@ -20,11 +20,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zhjh.androidnews.R;
 import com.zhjh.androidnews.app.AppConstant;
+import com.zhjh.androidnews.bean.PhotoChannelTable;
 import com.zhjh.androidnews.bean.PhotoGirl;
 import com.zhjh.androidnews.bean.VideoChannelTable;
+import com.zhjh.androidnews.db.PhotosChannelTableManager;
 import com.zhjh.androidnews.db.VideosChannelTableManager;
 import com.zhjh.androidnews.ui.news.activity.PhotosDetailActivity;
 import com.zhjh.androidnews.ui.news.contract.PhotoListContract;
+import com.zhjh.androidnews.ui.news.fragment.PhotosFragment;
 import com.zhjh.androidnews.ui.news.fragment.VideosFragment;
 import com.zhjh.androidnews.ui.news.model.PhotosListModel;
 import com.zhjh.androidnews.ui.news.presenter.PhotosListPresenter;
@@ -68,11 +71,11 @@ public class PhotosMainFragment extends BaseFragment {
     @Override
     public void initView() {
         List<String> channelNames = new ArrayList<>();
-        List<VideoChannelTable> videoChannelTableList = VideosChannelTableManager.loadVideosChannelsMine();
+        List<PhotoChannelTable> photoChannelTableList = PhotosChannelTableManager.loadPhotosChannelsMine();
         List<Fragment> mNewsFragmentList = new ArrayList<>();
-        for (int i = 0; i < videoChannelTableList.size(); i++) {
-            channelNames.add(videoChannelTableList.get(i).getChannelName());
-            mNewsFragmentList.add(createListFragments(videoChannelTableList.get(i)));
+        for (int i = 0; i < photoChannelTableList.size(); i++) {
+            channelNames.add(photoChannelTableList.get(i).getChannelName());
+            mNewsFragmentList.add(createListFragments(photoChannelTableList.get(i)));
         }
         fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
         viewPager.setAdapter(fragmentAdapter);
@@ -106,10 +109,10 @@ public class PhotosMainFragment extends BaseFragment {
         });
     }
 
-    private VideosFragment createListFragments(VideoChannelTable videoChannelTable) {
-        VideosFragment fragment = new VideosFragment();
+    private PhotosFragment createListFragments(PhotoChannelTable photoChannelTable) {
+        PhotosFragment fragment = new PhotosFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(AppConstant.VIDEO_TYPE, videoChannelTable.getChannelId());
+        bundle.putString(AppConstant.PHOTO_TYPE, photoChannelTable.getChannelId());
         fragment.setArguments(bundle);
         return fragment;
     }

@@ -17,7 +17,7 @@ import rx.Observable;
 public interface PhotoListContract {
     interface Model extends BaseModel {
         //请求获取图片
-        Observable <List<PhotoGirl>> getPhotosListData(int size, int page);
+        Observable <List<PhotoGirl>> getPhotosListData(String type,int size, int page);
     }
 
     interface View extends BaseView {
@@ -26,6 +26,6 @@ public interface PhotoListContract {
     }
     abstract static class Presenter extends BasePresenter<View, Model> {
         //发起获取图片请求
-        public abstract void getPhotosListDataRequest(int size, int page);
+        public abstract void getPhotosListDataRequest(String type,int size, int page);
     }
 }

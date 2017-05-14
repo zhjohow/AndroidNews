@@ -14,6 +14,7 @@ import com.aspsine.irecyclerview.widget.LoadMoreFooterView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zhjh.androidnews.R;
+import com.zhjh.androidnews.app.AppConstant;
 import com.zhjh.androidnews.bean.PhotoGirl;
 import com.zhjh.androidnews.ui.news.activity.PhotosDetailActivity;
 import com.zhjh.androidnews.ui.news.contract.PhotoListContract;
@@ -44,6 +45,7 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
     private CommonRecycleViewAdapter<PhotoGirl>adapter;
     private static int SIZE = 20;
     private int mStartPage = 1;
+    private String mPhotoType;
 
     @Override
     protected int getLayoutResource() {
@@ -57,21 +59,24 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
 
     @Override
     public void initView() {
+        if (getArguments() != null) {
+            mPhotoType = getArguments().getString(AppConstant.PHOTO_TYPE);
+        }
         adapter=new CommonRecycleViewAdapter<PhotoGirl>(getContext(),R.layout.item_photo) {
             @Override
             public void convert(ViewHolderHelper helper,final PhotoGirl photoGirl) {
                 ImageView imageView=helper.getView(R.id.iv_photo);
-                Glide.with(mContext).load(photoGirl.getUrl())
+                Glide.with(mContext).load(photoGirl.getImage_url())
                         .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .placeholder(com.zhjh.common.R.drawable.ic_image_loading)
-                        .error(com.zhjh.common.R.drawable.ic_empty_picture)
+                        .placeholder(R.drawable.ic_image_loading)
+                        .error(R.drawable.ic_empty_picture)
                         .centerCrop().override(1090, 1090*3/4)
                         .crossFade().into(imageView);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        PhotosDetailActivity.startAction(mContext,photoGirl.getUrl());
+                        PhotosDetailActivity.startAction(mContext,photoGirl.getImage_url());
                     }
                 });
             }
@@ -86,7 +91,7 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
 //                irc.smoothScrollToPosition(0);
 //            }
 //        });
-        mPresenter.getPhotosListDataRequest(SIZE, mStartPage);
+        mPresenter.getPhotosListDataRequest(mPhotoType,SIZE, mStartPage);
     }
 
     @Override
@@ -135,14 +140,14 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
         mStartPage = 0;
         //发起请求
         irc.setRefreshing(true);
-        mPresenter.getPhotosListDataRequest(SIZE, mStartPage);
+        mPresenter.getPhotosListDataRequest(mPhotoType,SIZE, mStartPage);
     }
     @Override
     public void onLoadMore(View loadMoreView) {
         adapter.getPageBean().setRefresh(false);
         //发起请求
         irc.setLoadMoreStatus(LoadMoreFooterView.Status.LOADING);
-        mPresenter.getPhotosListDataRequest(SIZE, mStartPage);
+        mPresenter.getPhotosListDataRequest(mPhotoType,SIZE, mStartPage);
     }
 
 }

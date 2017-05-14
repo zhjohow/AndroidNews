@@ -3,11 +3,13 @@ package com.zhjh.androidnews.api;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.SparseArray;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zhjh.common.baseapp.BaseApplication;
+import com.zhjh.common.commonutils.LogUtils;
 import com.zhjh.common.commonutils.NetWorkUtils;
 
 import java.io.File;
@@ -76,9 +78,18 @@ public class Api {
 
     //构造方法私有
     private Api(int hostType) {
-        //开启Log
+//        //开启Log
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+//        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+//            @Override
+//            public void log(String message) {
+//                Log.e("okhttp", message);
+//            }
+//        });
+
+
         //缓存
         File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--视频频道-->
+    <string-array name="photo_channel_name">
+        <item>长腿</item>
+        <item>校花</item>
+        <item>诱惑</item>
+        <item>车模</item>
+    </string-array>
+    <string-array name="photo_channel_id">
+        <item>长腿</item>
+        <item>校花</item>
+        <item>诱惑</item>
+        <item>车模</item>
+    </string-array>
+</resources>

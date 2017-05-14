@@ -31,15 +31,15 @@
             android:layout_gravity="center"
             android:gravity="center" />
     </RelativeLayout>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_arrow_upward"
-            app:backgroundTint="@color/main_color"
-            app:layout_behavior="com.zhjohow.androidnews.widget.ScrollAwareFABBehavior" />
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--android:layout_margin="@dimen/fab_margin"-->
+            <!--android:src="@drawable/ic_arrow_upward"-->
+            <!--app:backgroundTint="@color/main_color"-->
+            <!--app:layout_behavior="com.zhjh.androidnews.widget.ScrollAwareFABBehavior" />-->
 
 </android.support.design.widget.CoordinatorLayout>
 
