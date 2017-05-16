@@ -23,38 +23,17 @@ import rx.functions.Func2;
  */
 public class PhotosListModel implements PhotoListContract.Model{
     @Override
-    public Observable<List<PhotoGirl>> getPhotosListData( final String type,int size, int page) {
+    public Observable<List<PhotoGirl>> getPhotosListData( String type,int size, int page) {
         return Api.getDefault(HostType.GANK_GIRL_PHOTO)
                 .getPhotoList(Api.getCacheControl(),"美女",type,size, page)
-//                .map(new Func1<GirlData, List<PhotoGirl>>() {
-//                    @Override
-//                    public List<PhotoGirl> call(GirlData girlData) {
-//                        return girlData.getResults();
-//                    }
-//                })
+                .map(new Func1<GirlData, List<PhotoGirl>>() {
+                    @Override
+                    public List<PhotoGirl> call(GirlData girlData) {
+                        return girlData.getResults();
+                    }
+                })
 
-                .flatMap(new Func1<Map<String, List<PhotoGirl>>, Observable<PhotoGirl>>() {
-                    @Override
-                    public Observable<PhotoGirl> call(Map<String, List<PhotoGirl>> map) {
-                        return Observable.from(map.get(type));
-                    }
-                })
-                //转化时间
-                .map(new Func1<PhotoGirl, PhotoGirl>() {
-                    @Override
-                    public PhotoGirl call(PhotoGirl videoData) {
-                        String ptime = TimeUtil.formatDate(videoData.getDate());
-                        videoData.setDate(ptime);
-                        return videoData;
-                    }
-                })
-                .distinct()//去重
-                .toSortedList(new Func2<PhotoGirl, PhotoGirl, Integer>() {
-                    @Override
-                    public Integer call(PhotoGirl videoData, PhotoGirl videoData2) {
-                        return videoData2.getDate().compareTo(videoData.getDate());
-                    }
-                })
+
                 .compose(RxSchedulers.<List<PhotoGirl>>io_main());
     }
 }

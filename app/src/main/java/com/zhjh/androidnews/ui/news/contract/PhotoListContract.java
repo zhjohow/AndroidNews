@@ -23,6 +23,8 @@ public interface PhotoListContract {
     interface View extends BaseView {
         //返回获取的图片
         void returnPhotosListData(List<PhotoGirl> photoGirls);
+        //返回顶部
+        void scrolltoTop();
     }
     abstract static class Presenter extends BasePresenter<View, Model> {
         //发起获取图片请求

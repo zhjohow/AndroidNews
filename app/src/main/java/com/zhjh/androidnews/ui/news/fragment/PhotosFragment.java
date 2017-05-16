@@ -150,4 +150,12 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
         mPresenter.getPhotosListDataRequest(mPhotoType,SIZE, mStartPage);
     }
 
+    /**
+     * 返回顶部
+     */
+    @Override
+    public void scrolltoTop() {
+        irc.smoothScrollToPosition(0);
+    }
+
 }

@@ -53,8 +53,8 @@ public interface ApiService {
 //            @Path("size") int size,
 //            @Path("page") int page);
 
-    @GET("list.json")
-    Observable<Map<String, List<PhotoGirl>>> getPhotoList(
+    @GET("listjson")
+    Observable<GirlData> getPhotoList(
             @Header("Cache-Control") String cacheControl,
             @Query("tag1") String tag1,
             @Query("ftags") String type,
