@@ -2,15 +2,15 @@
 <resources>
     <!--视频频道-->
     <string-array name="photo_channel_name">
-        <item>长腿</item>
-        <item>校花</item>
-        <item>诱惑</item>
-        <item>车模</item>
+        <item>惊艳</item>
+        <item>可爱</item>
+        <item>熟女</item>
+        <item>粉嫩</item>
     </string-array>
     <string-array name="photo_channel_id">
-        <item>长腿</item>
-        <item>校花</item>
-        <item>诱惑</item>
-        <item>车模</item>
+        <item>惊艳</item>
+        <item>可爱</item>
+        <item>熟女</item>
+        <item>粉嫩</item>
     </string-array>
 </resources>

@@ -53,13 +53,13 @@ public interface ApiService {
 //            @Path("size") int size,
 //            @Path("page") int page);
 
-    @GET("listjson")
+    @GET("getAllRecomPicByTag.jsp")
     Observable<GirlData> getPhotoList(
             @Header("Cache-Control") String cacheControl,
-            @Query("tag1") String tag1,
-            @Query("ftags") String type,
-            @Query("rn") int size,
-            @Query("pn") int page);
+            @Query("category") String tag1,
+            @Query("tag") String type,
+            @Query("len") int size,
+            @Query("start") int page);
 
     @GET("nc/video/list/{type}/n/{startPage}-10.html")
     Observable<Map<String, List<VideoData>>> getVideoList(

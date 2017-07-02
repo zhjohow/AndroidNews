@@ -20,44 +20,33 @@ import java.util.List;
 
 public class GirlData {
 
-    private List<PhotoGirl> data;
-    private String tag1;
-    private String tag2;
-    private int totalNum;
+    private List<PhotoGirl> all_items;
+    private String category;
+    private String tag;
     private int start_index;
-    private int return_number;
 
-    public void setResults(List<PhotoGirl> data) {
-        this.data = data;
+    public List<PhotoGirl> getAll_items() {
+        return all_items;
     }
 
-    public List<PhotoGirl> getResults() {
-        return data;
+    public void setAll_items(List<PhotoGirl> all_items) {
+        this.all_items = all_items;
     }
 
-
-    public String getTag1() {
-        return tag1;
+    public String getCategory() {
+        return category;
     }
 
-    public void setTag1(String tag1) {
-        this.tag1 = tag1;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getTag2() {
-        return tag2;
+    public String getTag() {
+        return tag;
     }
 
-    public void setTag2(String tag2) {
-        this.tag2 = tag2;
-    }
-
-    public int getTotalNum() {
-        return totalNum;
-    }
-
-    public void setTotalNum(int totalNum) {
-        this.totalNum = totalNum;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public int getStart_index() {
@@ -66,13 +55,5 @@ public class GirlData {
 
     public void setStart_index(int start_index) {
         this.start_index = start_index;
-    }
-
-    public int getReturn_number() {
-        return return_number;
-    }
-
-    public void setReturn_number(int return_number) {
-        this.return_number = return_number;
     }
 }

@@ -124,7 +124,7 @@ public class ApiConstants {
      */
 
 
-    public static final String SINA_PHOTO_HOST = "http://image.baidu.com/channel/";
+    public static final String SINA_PHOTO_HOST = "http://pic.sogou.com/pics/channel/";
 
     // 精选列表
     public static final String SINA_PHOTO_CHOICE_ID = "hdpic_toutiao";

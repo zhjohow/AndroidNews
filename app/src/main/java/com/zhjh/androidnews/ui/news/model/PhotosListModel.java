@@ -29,7 +29,7 @@ public class PhotosListModel implements PhotoListContract.Model{
                 .map(new Func1<GirlData, List<PhotoGirl>>() {
                     @Override
                     public List<PhotoGirl> call(GirlData girlData) {
-                        return girlData.getResults();
+                        return girlData.getAll_items();
                     }
                 })
 

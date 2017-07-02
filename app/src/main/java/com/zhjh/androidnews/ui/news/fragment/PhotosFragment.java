@@ -66,7 +66,7 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
             @Override
             public void convert(ViewHolderHelper helper,final PhotoGirl photoGirl) {
                 ImageView imageView=helper.getView(R.id.iv_photo);
-                Glide.with(mContext).load(photoGirl.getImage_url())
+                Glide.with(mContext).load(photoGirl.getThumbUrl())
                         .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                         .placeholder(R.drawable.ic_image_loading)
                         .error(R.drawable.ic_empty_picture)
@@ -76,7 +76,7 @@ public class PhotosFragment extends BaseFragment<PhotosListPresenter,PhotosListM
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        PhotosDetailActivity.startAction(mContext,photoGirl.getImage_url());
+                        PhotosDetailActivity.startAction(mContext,photoGirl.getThumbUrl());
                     }
                 });
             }
