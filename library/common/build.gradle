@@ -32,8 +32,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/Parse-1.9.4.jar')
     compile files('libs/commons-codec-1.6.jar')
-    compile files('libs/alipaySdk-20160516.jar')
-
     compile 'com.android.support:support-v4:23.+'
     compile 'com.android.support:recyclerview-v7:23.+'
     compile 'com.android.support:support-annotations:23.+'

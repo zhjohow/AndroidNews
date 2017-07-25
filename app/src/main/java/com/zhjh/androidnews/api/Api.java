@@ -9,7 +9,6 @@ import android.util.SparseArray;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.zhjh.common.baseapp.BaseApplication;
-import com.zhjh.common.commonutils.LogUtils;
 import com.zhjh.common.commonutils.NetWorkUtils;
 
 import java.io.File;
@@ -29,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * des:retorfit api
- * Created by xsf
+ * Created by zhjh
  * on 2016.06.15:47
  */
 public class Api {
@@ -79,16 +78,16 @@ public class Api {
     //构造方法私有
     private Api(int hostType) {
 //        //开启Log
-        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
+//        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
+//        logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Log.e("okhttp", message);
+            }
+        });
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-//        HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-//            @Override
-//            public void log(String message) {
-//                Log.e("okhttp", message);
-//            }
-//        });
-
 
         //缓存
         File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cache");
@@ -109,6 +108,16 @@ public class Api {
                 .connectTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
                 .addInterceptor(mRewriteCacheControlInterceptor)
                 .addNetworkInterceptor(mRewriteCacheControlInterceptor)
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public okhttp3.Response intercept(Chain chain) throws IOException {
+                        Request.Builder builder = chain.request().newBuilder();
+                        builder.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.108 Safari/537.36 2345Explorer/8.0.0.13547");
+                        builder.addHeader("Upgrade-Insecure-Requests", "1");
+                        builder.addHeader("X-Requested-With", "XMLHttpRequest");
+                        return chain.proceed(builder.build());
+                    }
+                })
                 .addInterceptor(headerInterceptor)
                 .addInterceptor(logInterceptor)
                 .cache(cache)

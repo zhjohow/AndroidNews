@@ -3,7 +3,6 @@ package com.zhjh.androidnews.api;
 import com.zhjh.androidnews.bean.GirlData;
 import com.zhjh.androidnews.bean.NewsDetail;
 import com.zhjh.androidnews.bean.NewsSummary;
-import com.zhjh.androidnews.bean.PhotoGirl;
 import com.zhjh.androidnews.bean.User;
 import com.zhjh.androidnews.bean.VideoData;
 import com.zhjh.common.basebean.BaseRespose;
@@ -68,22 +67,5 @@ public interface ApiService {
             @Path("startPage") int startPage);
 
 
-
-    /**
-     * 新浪图片新闻列表 例子：http://api.sina.cn/sinago/list.json?channel=hdpic_pretty&adid=4ad30dabe134695c3b7c3a65977d7e72&wm=b207&from=6042095012&chwm=12050_0001&oldchwm=12050_0001&imei=867064013906290&uid=802909da86d9f5fc&p=1
-     *
-     * @param page 页码
-     * @return 被观察对象
-     */
-//    @GET("list.json")
-//    Observable<GirlData> getSinaPhotoList(
-//            @Header("Cache-Control") String cacheControl,
-//            @Query("channel") String photoTypeId,
-//            @Query("adid") String adid,
-//            @Query("wm") String wm,
-//            @Query("from") String from,
-//            @Query("chwm") String chwm,
-//            @Query("oldchwm") String oldchwm,
-//            @Query("imei") String imei, @Query("uid") String uid, @Query("p") int page);
 
 }

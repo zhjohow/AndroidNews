@@ -1,6 +1,5 @@
 include ':app'
 include ':library:common'
 include ':library:irecyclerview'
-include ':library:photoPicker'
 include ':library:jcvideoplayer'
 include ':library:selectordialog'

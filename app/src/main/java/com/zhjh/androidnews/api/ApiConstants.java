@@ -31,11 +31,6 @@ public class ApiConstants {
     // 其他TYPE
     public static final String OTHER_TYPE = "list";
 
-    //    // 北京
-    //    public static final String LOCAL_TYPE = "local";
-    //    // 北京的Id
-    //    public static final String BEIJING_ID = "5YyX5Lqs";
-    //example：http://c.m.163.com/nc/article/headline/T1348647909107/0-20.html
     // 头条id
     public static final String HEADLINE_ID = "T1348647909107";
     // 房产id
@@ -114,26 +109,19 @@ public class ApiConstants {
 //    // 精品视频
 //    public static final String VIDEO_CHOICE_ID = "00850FRB";
 
-//    /**
-//     * 天气预报url
-//     */
-//    public static final String WEATHER_HOST = "http://wthrcdn.etouch.cn/";
 
-    /**
-     * 新浪图片新闻
-     */
 
 
     public static final String SINA_PHOTO_HOST = "http://pic.sogou.com/pics/channel/";
 
-    // 精选列表
-    public static final String SINA_PHOTO_CHOICE_ID = "hdpic_toutiao";
-    // 趣图列表
-    public static final String SINA_PHOTO_FUN_ID = "hdpic_funny";
-    // 美图列表
-    public static final String SINA_PHOTO_PRETTY_ID = "hdpic_pretty";
-    // 故事列表
-    public static final String SINA_PHOTO_STORY_ID = "hdpic_story";
+//    // 精选列表
+//    public static final String SINA_PHOTO_CHOICE_ID = "hdpic_toutiao";
+//    // 趣图列表
+//    public static final String SINA_PHOTO_FUN_ID = "hdpic_funny";
+//    // 美图列表
+//    public static final String SINA_PHOTO_PRETTY_ID = "hdpic_pretty";
+//    // 故事列表
+//    public static final String SINA_PHOTO_STORY_ID = "hdpic_story";
 
     // 图片详情
     public static final String SINA_PHOTO_DETAIL_ID = "hdpic_hdpic_toutiao_4";

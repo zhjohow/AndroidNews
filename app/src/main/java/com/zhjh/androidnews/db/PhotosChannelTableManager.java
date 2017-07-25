@@ -20,7 +20,6 @@ package com.zhjh.androidnews.db;
 import com.zhjh.androidnews.R;
 import com.zhjh.androidnews.app.AppApplication;
 import com.zhjh.androidnews.bean.PhotoChannelTable;
-import com.zhjh.androidnews.bean.VideoChannelTable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
