@@ -92,16 +92,8 @@ public class Api {
         //缓存
         File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
-        //增加头部信息
-        Interceptor headerInterceptor =new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request build = chain.request().newBuilder()
-                        .addHeader("Content-Type", "application/json")
-                        .build();
-                return chain.proceed(build);
-            }
-        };
+    
+
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(READ_TIME_OUT, TimeUnit.MILLISECONDS)
@@ -115,10 +107,10 @@ public class Api {
                         builder.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.108 Safari/537.36 2345Explorer/8.0.0.13547");
                         builder.addHeader("Upgrade-Insecure-Requests", "1");
                         builder.addHeader("X-Requested-With", "XMLHttpRequest");
+                        builder.addHeader("Content-Type", "application/json");
                         return chain.proceed(builder.build());
                     }
                 })
-                .addInterceptor(headerInterceptor)
                 .addInterceptor(logInterceptor)
                 .cache(cache)
                 .build();
