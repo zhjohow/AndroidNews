@@ -34,7 +34,6 @@ import rx.functions.Action1;
 
 /**
  * des:主界面
- * Created by xsf
  * on 2016.09.15:32
  */
 public class MainActivity extends BaseActivity {
@@ -75,13 +74,6 @@ public class MainActivity extends BaseActivity {
     }
     @Override
     public void initView() {
-//        //此处填上在http://fir.im/注册账号后获得的API_TOKEN以及APP的应用ID
-//        UpdateKey.API_TOKEN = AppConfig.API_FIRE_TOKEN;
-//        UpdateKey.APP_ID = AppConfig.APP_FIRE_ID;
-//        //如果你想通过Dialog来进行下载，可以如下设置
-////        UpdateKey.DialogOrNotification=UpdateKey.WITH_DIALOG;
-//        UpdateFunGO.init(this);
-        //初始化菜单
         initTab();
     }
     @Override
